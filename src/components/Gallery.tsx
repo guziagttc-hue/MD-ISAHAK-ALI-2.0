@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Image, Cpu, Video } from 'lucide-react';
 
-const photos: string[] = [];
+const photos: string[] = ["https://res.cloudinary.com/djginu4oz/image/upload/v1786851749/9f8f9bc4e6d4441ab55f47f5a34b9778_zmetmy.jpg"];
 
 const softwares: { title: string; description: string; link: string }[] = [
   { title: "নামাজ শিক্ষা", description: "সহজ উপায়ে নামাজ শিক্ষা করার একটি প্রজেক্ট।", link: "https://namaj-shikkha-nc8p.vercel.app/" },
