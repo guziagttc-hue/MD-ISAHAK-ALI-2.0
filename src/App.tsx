@@ -6,6 +6,7 @@ import { Education } from './components/Education';
 import { Skills } from './components/Skills';
 import { SocialLinks } from './components/SocialLinks';
 import { Gallery } from './components/Gallery';
+import { Resume } from './components/Resume';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
@@ -21,6 +22,7 @@ export default function App() {
         <Skills />
         <SocialLinks />
         <Gallery />
+        <Resume />
         <Contact />
       </main>
       <Footer />

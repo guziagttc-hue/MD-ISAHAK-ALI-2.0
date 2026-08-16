@@ -37,9 +37,14 @@ export const Hero = () => {
         transition={{ duration: 1, delay: 0.5 }}
       />
       <p className="mb-8 text-xl text-rose-200 h-8">{text}</p>
-      <a href="#portfolio" className="inline-block rounded-full bg-rose-600 px-8 py-3 font-bold text-neutral-950 hover:bg-rose-500">
-        আমার কাজ দেখুন
-      </a>
+      <div className="flex gap-4 justify-center">
+        <a href="#portfolio" className="inline-block rounded-full bg-rose-600 px-8 py-3 font-bold text-neutral-950 hover:bg-rose-500">
+          আমার কাজ দেখুন
+        </a>
+        <a href="#resume" className="inline-block rounded-full border border-rose-400 px-8 py-3 font-bold text-white hover:bg-rose-900">
+          আমার সিভি দেখুন
+        </a>
+      </div>
     </div>
   </motion.section>
   );
