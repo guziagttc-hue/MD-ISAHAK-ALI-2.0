@@ -5,6 +5,7 @@ const photos: string[] = ["https://res.cloudinary.com/djginu4oz/image/upload/v17
 
 const softwares: { title: string; description: string; link: string }[] = [
   { title: "নামাজ শিক্ষা", description: "সহজ উপায়ে নামাজ শিক্ষা করার একটি প্রজেক্ট।", link: "https://namaj-shikkha-nc8p.vercel.app/" },
+  { title: "Image to Link Converter", description: "ছবি থেকে লিঙ্কে রূপান্তর করার একটি টুল।", link: "https://image-to-link-convatar.vercel.app/" },
 ];
 
 const videos: string[] = [];

@@ -17,7 +17,7 @@ export const Education = () => {
     {
       name: "Daridaha Technical and BM College",
       bn: "(দারিদহ টেকনিক্যাল অ্যান্ড বিএম কলেজ)",
-      details: "Completed Honors Graduation."
+      details: "Completed Higher Secondary Certificate (HSC)."
     }
   ];
 
