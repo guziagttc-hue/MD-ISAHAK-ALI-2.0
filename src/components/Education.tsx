@@ -18,6 +18,16 @@ export const Education = () => {
       name: "Daridaha Technical and BM College",
       bn: "(দারিদহ টেকনিক্যাল অ্যান্ড বিএম কলেজ)",
       details: "Completed Higher Secondary Certificate (HSC)."
+    },
+    {
+      name: "TMSS Travels & Tourism Training Institute",
+      bn: "(টিএমএসএস ট্রাভেলস অ্যান্ড ট্যুরিজম ট্রেনিং ইনস্টিটিউট)",
+      details: "National Skill Standard Basic (NSSB) in Computer Office Application - 2025."
+    },
+    {
+      name: "Shibganj Government Mozaffar Hossain College",
+      bn: "(শিবগঞ্জ সরকারি মোজাফফর হোসেন কলেজ)",
+      details: "Currently pursuing Bachelor of Arts (B.A) - 2026."
     }
   ];
 
