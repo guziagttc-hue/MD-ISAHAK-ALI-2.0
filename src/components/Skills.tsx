@@ -26,30 +26,92 @@ export const Skills = () => {
   ];
 
   return (
-    <motion.section 
-      id="skills" 
-      className="container mx-auto px-6 py-20"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      <h2 className="text-4xl font-bold text-white text-center mb-12">Technical & Practical Skills</h2>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {skills.map((skillGroup, index) => (
-          <div key={index} className="bg-rose-950 border border-rose-800 rounded-2xl p-6 shadow-lg">
-            <h3 className="text-xl font-semibold text-rose-300 mb-4">{skillGroup.title}</h3>
-            <ul className="space-y-2">
-              {skillGroup.items.map((item, itemIndex) => (
-                <li key={itemIndex} className="text-gray-100 flex items-center">
-                  <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+    <section id="skills" className="relative py-20 bg-[#080808] overflow-hidden">
+      {/* Dynamic Weather/Nature Animation Container */}
+      <div className="absolute inset-0 pointer-events-none z-10">
+        {[...Array(20)].map((_, i) => {
+          const month = new Date().getMonth() + 1; // 1-12
+          let icon = "🌸";
+          let color = "text-pink-300";
+
+          // Snow: Dec(12), Jan(1), Feb(2)
+          if (month === 12 || month === 1 || month === 2) {
+            icon = "❄️";
+            color = "text-white";
+          }
+          // Rain: Jun(6), Jul(7), Aug(8)
+          else if (month >= 6 && month <= 8) {
+            icon = "💧";
+            color = "text-blue-300";
+          }
+          // Default: Flowers
+          else {
+            icon = i % 2 === 0 ? "🌸" : "✧";
+            color = "text-pink-300";
+          }
+
+          return (
+            <motion.div
+              key={i}
+              className={`absolute ${color} opacity-70`}
+              initial={{ top: "-10%" }}
+              animate={{ 
+                top: "110%", 
+                rotate: month >= 6 && month <= 8 ? 0 : 360,
+                x: month >= 6 && month <= 8 ? 0 : [0, 20, 0]
+              }}
+              transition={{ 
+                duration: 5 + Math.random() * 5, 
+                repeat: Infinity, 
+                ease: "linear",
+                delay: Math.random() * 10
+              }}
+              style={{ left: `${Math.random() * 100}%` }}
+            >
+              {icon}
+            </motion.div>
+          );
+        })}
       </div>
-    </motion.section>
+
+      <div className="container mx-auto px-6 relative z-20">
+        {/* Experience Card */}
+        <div className="flex justify-center mb-20">
+          <div className="bg-white/5 backdrop-blur-lg border border-yellow-500/30 p-10 rounded-3xl text-center shadow-2xl">
+            <div className="text-[120px] font-bold bg-gradient-to-br from-yellow-400 to-white bg-clip-text text-transparent leading-none mb-2">
+              5+
+            </div>
+            <div className="text-3xl text-gray-200 tracking-widest uppercase">
+              বছরের বাস্তব অভিজ্ঞতা
+            </div>
+          </div>
+        </div>
+
+        {/* Skills Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl font-bold text-white text-center mb-12">Technical & Practical Skills</h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {skills.map((skillGroup, index) => (
+              <div key={index} className="bg-rose-950 border border-rose-800 rounded-2xl p-6 shadow-lg">
+                <h3 className="text-xl font-semibold text-rose-300 mb-4">{skillGroup.title}</h3>
+                <ul className="space-y-2">
+                  {skillGroup.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="text-gray-100 flex items-center">
+                      <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
