@@ -1,29 +1,28 @@
 
 import { motion } from "motion/react";
+import { useLanguage } from "../context/LanguageContext";
 
 export const Skills = () => {
-  const skills = [
-    {
-      title: "Software & Web Development",
-      items: ["HTML", "CSS", "JavaScript", "Supabase API", "Web Application Management"]
-    },
-    {
-      title: "Computer Office Applications",
-      items: ["MS Word", "MS Excel", "MS PowerPoint", "MS Access"]
-    },
-    {
-      title: "Electrical Engineering",
-      items: ["Electrical House Wiring", "Handling Hand Tools", "Operating Power Tools"]
-    },
-    {
-      title: "Digital Content Creation",
-      items: ["Graphic Design", "YouTube Channel Management", "Audio/Video Content Creation"]
-    },
-    {
-      title: "Other Skills",
-      items: ["Motorbike Driving", "Car Driving", "Photography"]
-    }
-  ];
+  const { language } = useLanguage();
+
+  const skillsData = {
+    bn: [
+      { title: "সফটওয়্যার ও ওয়েব ডেভেলপমেন্ট", items: ["HTML", "CSS", "JavaScript", "Supabase API", "Web Application Management"] },
+      { title: "কম্পিউটার অফিস অ্যাপ্লিকেশন", items: ["MS Word", "MS Excel", "MS PowerPoint", "MS Access"] },
+      { title: "ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং", items: ["Electrical House Wiring", "Handling Hand Tools", "Operating Power Tools"] },
+      { title: "ডিজিটাল কন্টেন্ট ক্রিয়েশন", items: ["Graphic Design", "YouTube Channel Management", "Audio/Video Content Creation"] },
+      { title: "অন্যান্য দক্ষতা", items: ["Motorbike Driving", "Car Driving", "Photography"] }
+    ],
+    en: [
+      { title: "Software & Web Development", items: ["HTML", "CSS", "JavaScript", "Supabase API", "Web Application Management"] },
+      { title: "Computer Office Applications", items: ["MS Word", "MS Excel", "MS PowerPoint", "MS Access"] },
+      { title: "Electrical Engineering", items: ["Electrical House Wiring", "Handling Hand Tools", "Operating Power Tools"] },
+      { title: "Digital Content Creation", items: ["Graphic Design", "YouTube Channel Management", "Audio/Video Content Creation"] },
+      { title: "Other Skills", items: ["Motorbike Driving", "Car Driving", "Photography"] }
+    ]
+  };
+
+  const skills = skillsData[language];
 
   return (
     <section id="skills" className="relative py-20 bg-[#080808] overflow-hidden">
@@ -82,7 +81,7 @@ export const Skills = () => {
               5+
             </div>
             <div className="text-3xl text-gray-200 tracking-widest uppercase">
-              বছরের বাস্তব অভিজ্ঞতা
+              {language === 'bn' ? "বছরের বাস্তব অভিজ্ঞতা" : "Years of Experience"}
             </div>
           </div>
         </div>
@@ -94,7 +93,9 @@ export const Skills = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-white text-center mb-12">Technical & Practical Skills</h2>
+          <h2 className="text-4xl font-bold text-white text-center mb-12">
+            {language === 'bn' ? "কারিগরি ও ব্যবহারিক দক্ষতা" : "Technical & Practical Skills"}
+          </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {skills.map((skillGroup, index) => (
               <div key={index} className="bg-rose-950 border border-rose-800 rounded-2xl p-6 shadow-lg">

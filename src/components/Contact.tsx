@@ -2,8 +2,10 @@
 import { Mail, Check, Copy } from 'lucide-react';
 import { motion } from "motion/react";
 import { useState } from 'react';
+import { useLanguage } from "../context/LanguageContext";
 
 export const Contact = () => {
+  const { language } = useLanguage();
   const [copied, setCopied] = useState(false);
   const email = "mdesaislam74@gmail.com";
 
@@ -22,20 +24,20 @@ export const Contact = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <h2 className="mb-12 text-4xl font-bold text-white">যোগাযোগ করুন</h2>
-      <p className="mb-8 text-rose-200">আপনার কোনো প্রজেক্টের আইডিয়া বা প্রশ্ন থাকলে নির্দ্বিধায় যোগাযোগ করুন।</p>
+      <h2 className="mb-12 text-4xl font-bold text-white">{language === 'bn' ? "যোগাযোগ করুন" : "Contact Me"}</h2>
+      <p className="mb-8 text-rose-200">{language === 'bn' ? "আপনার কোনো প্রজেক্টের আইডিয়া বা প্রশ্ন থাকলে নির্দ্বিধায় যোগাযোগ করুন।" : "If you have any project ideas or questions, feel free to contact me."}</p>
       <div className="flex justify-center text-rose-200">
         <button 
           onClick={handleCopy}
           className="flex items-center gap-2 hover:text-rose-400 transition-colors"
-          title="ইমেইল কপি করুন"
+          title={language === 'bn' ? "ইমেইল কপি করুন" : "Copy Email"}
         >
           <Mail size={20} /> 
           {email}
           {copied ? <Check size={16} className="text-green-400" /> : <Copy size={16} />}
         </button>
       </div>
-      {copied && <p className="text-green-400 mt-2 text-sm">ইমেইল কপি হয়েছে!</p>}
+      {copied && <p className="text-green-400 mt-2 text-sm">{language === 'bn' ? "ইমেইল কপি হয়েছে!" : "Email copied!"}</p>}
     </motion.section>
   );
 };

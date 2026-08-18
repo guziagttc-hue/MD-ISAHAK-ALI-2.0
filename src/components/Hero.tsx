@@ -1,10 +1,12 @@
 
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 export const Hero = () => {
+  const { language } = useLanguage();
   const [text, setText] = useState("");
-  const fullText = "ওয়েব ডেভেলপার এবং সফটওয়্যার ইঞ্জিনিয়ার";
+  const fullText = language === 'bn' ? "ওয়েব ডেভেলপার এবং সফটওয়্যার ইঞ্জিনিয়ার" : "Web Developer and Software Engineer";
   
   useEffect(() => {
     let index = 0;
@@ -29,7 +31,7 @@ export const Hero = () => {
   >
     <div className="absolute inset-0 bg-rose-900/60" />
     <div className="container relative mx-auto px-6">
-      <h1 className="mb-4 text-5xl font-bold text-white">হ্যালো, আমি <span className="text-rose-400">MD. ISAHAK ALI</span></h1>
+      <h1 className="mb-4 text-5xl font-bold text-white">{language === 'bn' ? "হ্যালো, আমি" : "Hello, I am"} <span className="text-rose-400">MD. ISAHAK ALI</span></h1>
       <motion.div
         className="h-1 w-24 bg-rose-400 mx-auto mb-8"
         initial={{ width: 0 }}
@@ -39,10 +41,10 @@ export const Hero = () => {
       <p className="mb-8 text-xl text-rose-200 h-8">{text}</p>
       <div className="flex gap-4 justify-center">
         <a href="#portfolio" className="inline-block rounded-full bg-rose-600 px-8 py-3 font-bold text-neutral-950 hover:bg-rose-500">
-          আমার কাজ দেখুন
+          {language === 'bn' ? "আমার কাজ দেখুন" : "View My Work"}
         </a>
         <a href="#resume" className="inline-block rounded-full border border-rose-400 px-8 py-3 font-bold text-white hover:bg-rose-900">
-          আমার সিভি দেখুন
+          {language === 'bn' ? "আমার সিভি দেখুন" : "View My CV"}
         </a>
       </div>
     </div>

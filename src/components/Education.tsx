@@ -1,33 +1,35 @@
 
 import { Circle } from 'lucide-react';
 import { motion } from "motion/react";
+import { useLanguage } from "../context/LanguageContext";
 
 export const Education = () => {
+  const { language } = useLanguage();
   const educationData = [
     {
       name: "Griyar Para Primary School",
       bn: "(গড়িয়ার পাড়া সরকারি প্রাথমিক বিদ্যালয়)",
-      details: "Completed Primary Education up to class V."
+      details: language === 'bn' ? "ক্লাস V পর্যন্ত প্রাথমিক শিক্ষা সম্পন্ন।" : "Completed Primary Education up to class V."
     },
     {
       name: "Barail Bakson High School",
       bn: "(বরাইল বাকশন উচ্চ বিদ্যালয়)",
-      details: "Completed Secondary School Certificate (SSC) - Class VIII & X."
+      details: language === 'bn' ? "মাধ্যমিক স্কুল সার্টিফিকেট (SSC) - অষ্টম ও দশম শ্রেণি সম্পন্ন।" : "Completed Secondary School Certificate (SSC) - Class VIII & X."
     },
     {
       name: "Daridaha Technical and BM College",
       bn: "(দারিদহ টেকনিক্যাল অ্যান্ড বিএম কলেজ)",
-      details: "Completed Higher Secondary Certificate (HSC)."
+      details: language === 'bn' ? "উচ্চ মাধ্যমিক সার্টিফিকেট (HSC) সম্পন্ন।" : "Completed Higher Secondary Certificate (HSC)."
     },
     {
       name: "TMSS Travels & Tourism Training Institute",
       bn: "(টিএমএসএস ট্রাভেলস অ্যান্ড ট্যুরিজম ট্রেনিং ইনস্টিটিউট)",
-      details: "National Skill Standard Basic (NSSB) in Computer Office Application - 2025."
+      details: language === 'bn' ? "ন্যাশনাল স্কিল স্ট্যান্ডার্ড বেসিক (NSSB) ইন কম্পিউটার অফিস অ্যাপ্লিকেশন - ২০২৫।" : "National Skill Standard Basic (NSSB) in Computer Office Application - 2025."
     },
     {
       name: "Shibganj Government Mozaffar Hossain College",
       bn: "(শিবগঞ্জ সরকারি মোজাফফর হোসেন কলেজ)",
-      details: "Currently pursuing Bachelor of Arts (B.A) - 2026."
+      details: language === 'bn' ? "বর্তমানে ব্যাচেলর অফ আর্টস (B.A) অধ্যয়নরত - ২০২৬।" : "Currently pursuing Bachelor of Arts (B.A) - 2026."
     }
   ];
 
@@ -42,7 +44,7 @@ export const Education = () => {
     >
       <div className="max-w-2xl w-full backdrop-blur-md bg-white/10 p-10 rounded-3xl border border-white/20 shadow-2xl">
         <h2 className="text-5xl font-extrabold text-white text-center mb-12 uppercase tracking-widest">
-          Education
+          {language === 'bn' ? "শিক্ষা" : "Education"}
         </h2>
         <div className="space-y-10">
           {educationData.map((item, index) => (
