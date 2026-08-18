@@ -11,7 +11,7 @@ export const SocialLinks = () => {
     { name: language === 'bn' ? 'মেসেঞ্জার চ্যানেল' : 'Messenger Channel', href: 'https://www.messenger.com/channel/mdesahak.esa.5', icon: MessageCircle, color: 'text-blue-500' },
     { name: language === 'bn' ? 'হোয়াটসঅ্যাপ গ্রুপ চ্যাট' : 'WhatsApp Group Chat', href: 'https://chat.whatsapp.com/KEtuFzh4oyn37iTR86O8DK', icon: MessageSquare, color: 'text-green-500' },
     { name: language === 'bn' ? 'ইউটিউব চ্যানেল' : 'YouTube Channel', href: 'https://youtube.com/@ottcottc?si=3Xlg0MBaedASVHEJ', icon: Youtube, color: 'text-red-600' },
-    { name: language === 'bn' ? 'ফাইভার প্রোফাইল' : 'Fiverr Profile', href: 'https://fiverr.com/s/9d2dVaD', icon: ExternalLink, color: 'text-green-600' },
+    { name: language === 'bn' ? 'ফাইভার প্রোফাইল' : 'Fiverr Profile', href: 'https://www.fiverr.com/s/8xdx1mq', icon: ExternalLink, color: 'text-green-600' },
   ];
 
   return (
