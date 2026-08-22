@@ -1,6 +1,7 @@
 
 import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
+import { AgeCounter } from "./AgeCounter";
 
 export const About = () => {
   const { language } = useLanguage();
@@ -35,6 +36,7 @@ export const About = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
+      <AgeCounter />
       <div className="bg-rose-950/50 border border-rose-800 rounded-3xl p-10 shadow-2xl backdrop-blur-sm">
         <h2 className="mb-12 text-center text-4xl font-bold text-white">{t.title}</h2>
         <div className="flex flex-col-reverse items-center gap-12 md:flex-row">

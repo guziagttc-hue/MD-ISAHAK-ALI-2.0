@@ -24,14 +24,19 @@ export const Header = () => {
   }, []);
 
   const handleInstall = async () => {
-    if (!deferredPrompt) {
-      alert(language === 'bn' ? "আপনার ব্রাউজারে অ্যাপটি ইন্সটল করার সুযোগ নেই, দয়া করে ব্রাউজার সেটিংস থেকে ইন্সটল করুন।" : "App installation not supported, please use your browser's install option.");
-      return;
-    }
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      setDeferredPrompt(null);
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        setDeferredPrompt(null);
+      }
+    } else {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      if (isIOS) {
+        alert(language === 'bn' ? "আইফোনে অ্যাপ ইন্সটল করতে নিচের শেয়ার বাটনে ক্লিক করুন এবং 'Add to Home Screen' সিলেক্ট করুন।" : "To install on iOS, tap the Share button and select 'Add to Home Screen'.");
+      } else {
+        alert(language === 'bn' ? "আপনার ব্রাউজার থেকে অ্যাপটি ইন্সটল করতে সেটিংস থেকে 'Install App' বা 'Add to Home Screen' অপশনটি খুঁজুন।" : "Please use your browser's menu to select 'Install App' or 'Add to Home Screen'.");
+      }
     }
   };
 
