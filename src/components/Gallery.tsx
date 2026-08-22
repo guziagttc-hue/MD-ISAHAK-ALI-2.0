@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Image, Cpu, Video } from 'lucide-react';
 
-const photos: string[] = ["https://res.cloudinary.com/djginu4oz/image/upload/v1786851749/9f8f9bc4e6d4441ab55f47f5a34b9778_zmetmy.jpg"];
+const photos: string[] = ["https://res.cloudinary.com/djginu4oz/image/upload/v1786851749/9f8f9bc4e6d4441ab55f47f5a34b9778_zmetmy.jpg", "https://res.cloudinary.com/djginu4oz/image/upload/v1787394349/Image_1_oohhaf.png"];
 
 const softwares: { title: string; description: string; link: string }[] = [
   { title: "Namaj Shikkha", description: "A project for learning Namaj in an easy way.", link: "https://namaj-shikkha-nc8p.vercel.app/" },
