@@ -32,11 +32,27 @@ export const Header = () => {
       }
     } else {
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const isAndroid = /Android/.test(navigator.userAgent);
+      
+      let message = language === 'bn' 
+        ? "অ্যাপটি ইন্সটল করতে:\n\n"
+        : "To install the app:\n\n";
+
       if (isIOS) {
-        alert(language === 'bn' ? "আইফোনে অ্যাপ ইন্সটল করতে নিচের শেয়ার বাটনে ক্লিক করুন এবং 'Add to Home Screen' সিলেক্ট করুন।" : "To install on iOS, tap the Share button and select 'Add to Home Screen'.");
+        message += language === 'bn' 
+          ? "১. নিচের শেয়ার বাটনে ক্লিক করুন।\n২. 'Add to Home Screen' অপশনটি সিলেক্ট করুন।"
+          : "1. Tap the Share button below.\n2. Select 'Add to Home Screen'.";
+      } else if (isAndroid) {
+        message += language === 'bn' 
+          ? "১. ব্রাউজারের মেনু (⋮) বাটনে ক্লিক করুন।\n২. 'Install App' বা 'Add to Home screen' সিলেক্ট করুন।"
+          : "1. Tap the browser menu (⋮).\n2. Select 'Install App' or 'Add to Home screen'.";
       } else {
-        alert(language === 'bn' ? "আপনার ব্রাউজার থেকে অ্যাপটি ইন্সটল করতে সেটিংস থেকে 'Install App' বা 'Add to Home Screen' অপশনটি খুঁজুন।" : "Please use your browser's menu to select 'Install App' or 'Add to Home Screen'.");
+        message += language === 'bn' 
+          ? "আপনার ব্রাউজারের সেটিংস বা মেনু থেকে 'Install' অপশনটি খুঁজুন।"
+          : "Look for the 'Install' option in your browser's menu or settings.";
       }
+      
+      alert(message);
     }
   };
 
