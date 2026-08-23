@@ -10,8 +10,33 @@ import { Resume } from './components/Resume';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { LanguageProvider } from './context/LanguageContext';
+import { useEffect } from 'react';
 
 export default function App() {
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => e.preventDefault();
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Prevent PrintScreen, Ctrl+C, Ctrl+V, Ctrl+P, Ctrl+S
+      if (
+        e.key === 'PrintScreen' ||
+        (e.ctrlKey && ['c', 'v', 'p', 's', 'x', 'a', 'u'].includes(e.key.toLowerCase()))
+      ) {
+        e.preventDefault();
+      }
+    };
+    const handleDragStart = (e: DragEvent) => e.preventDefault();
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('dragstart', handleDragStart);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('dragstart', handleDragStart);
+    };
+  }, []);
+
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-rose-950 text-rose-100">
