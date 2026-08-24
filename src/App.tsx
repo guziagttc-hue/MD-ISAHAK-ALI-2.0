@@ -10,6 +10,7 @@ import { Resume } from './components/Resume';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { LanguageProvider } from './context/LanguageContext';
+import { InstallButton } from './components/InstallButton';
 import { useEffect } from 'react';
 
 export default function App() {
@@ -25,24 +26,14 @@ export default function App() {
       }
     };
     const handleDragStart = (e: DragEvent) => e.preventDefault();
-    
-    // Suppress automatic install prompt
-    const handleBeforeInstallPrompt = (e: any) => {
-      e.preventDefault();
-      // We can still trigger prompt later if we store e
-      window.deferredPrompt = e;
-    };
-
     document.addEventListener('contextmenu', handleContextMenu);
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('dragstart', handleDragStart);
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('dragstart', handleDragStart);
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     };
   }, []);
 
@@ -61,6 +52,7 @@ export default function App() {
           <Resume />
           <Contact />
         </main>
+        <InstallButton />
         <Footer />
       </div>
     </LanguageProvider>
