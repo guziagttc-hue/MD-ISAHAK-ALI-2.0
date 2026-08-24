@@ -25,15 +25,24 @@ export default function App() {
       }
     };
     const handleDragStart = (e: DragEvent) => e.preventDefault();
+    
+    // Suppress automatic install prompt
+    const handleBeforeInstallPrompt = (e: any) => {
+      e.preventDefault();
+      // We can still trigger prompt later if we store e
+      window.deferredPrompt = e;
+    };
 
     document.addEventListener('contextmenu', handleContextMenu);
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('dragstart', handleDragStart);
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('dragstart', handleDragStart);
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     };
   }, []);
 

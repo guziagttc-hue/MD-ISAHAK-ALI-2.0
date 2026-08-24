@@ -4,7 +4,6 @@ import { useLanguage } from "../context/LanguageContext";
 
 export const Header = () => {
   const [dateTime, setDateTime] = useState(new Date());
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const { language, toggleLanguage } = useLanguage();
 
@@ -16,52 +15,11 @@ export const Header = () => {
     };
     window.addEventListener('scroll', handleScroll);
 
-    const handler = (e: any) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-    };
-
-    window.addEventListener('beforeinstallprompt', handler);
-
     return () => {
       clearInterval(timer);
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('beforeinstallprompt', handler);
     };
   }, []);
-
-  const handleInstall = async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') {
-        setDeferredPrompt(null);
-      }
-    } else {
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-      const isAndroid = /Android/.test(navigator.userAgent);
-      
-      let message = language === 'bn' 
-        ? "অ্যাপটি ইন্সটল করতে:\n\n"
-        : "To install the app:\n\n";
-
-      if (isIOS) {
-        message += language === 'bn' 
-          ? "১. নিচের শেয়ার বাটনে ক্লিক করুন।\n২. 'Add to Home Screen' অপশনটি সিলেক্ট করুন।"
-          : "1. Tap the Share button below.\n2. Select 'Add to Home Screen'.";
-      } else if (isAndroid) {
-        message += language === 'bn' 
-          ? "১. ব্রাউজারের মেনু (⋮) বাটনে ক্লিক করুন।\n২. 'Install App' বা 'Add to Home screen' সিলেক্ট করুন।"
-          : "1. Tap the browser menu (⋮).\n2. Select 'Install App' or 'Add to Home screen'.";
-      } else {
-        message += language === 'bn' 
-          ? "আপনার ব্রাউজারের সেটিংস বা মেনু থেকে 'Install' অপশনটি খুঁজুন।"
-          : "Look for the 'Install' option in your browser's menu or settings.";
-      }
-      
-      alert(message);
-    }
-  };
 
   const navLinks = [
     { name: language === 'bn' ? "আমার সম্পর্কে" : "About", href: "#about" },
@@ -93,19 +51,13 @@ export const Header = () => {
             </a>
           ))}
           
-          {/* Language Switcher and Install Button */}
+          {/* Language Switcher */}
           <div className="flex items-center gap-4 ml-4">
             <button 
               onClick={toggleLanguage}
               className="bg-rose-800 text-white px-3 py-1 rounded text-xs font-semibold hover:bg-rose-700 transition-colors"
             >
               {language === 'bn' ? 'English' : 'বাংলা'}
-            </button>
-            <button 
-              onClick={handleInstall}
-              className="bg-rose-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-rose-500 transition-all shadow-md"
-            >
-              {language === 'bn' ? (deferredPrompt ? 'অ্যাপ ইন্সটল করুন' : 'কিভাবে ইন্সটল করবেন?') : (deferredPrompt ? 'Install App' : 'How to install?')}
             </button>
           </div>
         </nav>
