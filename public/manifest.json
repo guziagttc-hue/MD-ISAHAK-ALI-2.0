@@ -1,6 +1,7 @@
 {
-  "name": "Md. Isahak Ali Portfolio",
+  "name": "MD. ISAHAK ALI Portfolio",
   "short_name": "Isahak Ali",
+  "description": "Portfolio of MD. ISAHAK ALI",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#4c0519",
