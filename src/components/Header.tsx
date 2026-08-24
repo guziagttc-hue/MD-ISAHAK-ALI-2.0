@@ -103,9 +103,9 @@ export const Header = () => {
             </button>
             <button 
               onClick={handleInstall}
-              className="bg-rose-600 text-white px-3 py-1 rounded text-xs font-semibold hover:bg-rose-500 transition-colors"
+              className="bg-rose-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-rose-500 transition-all shadow-md"
             >
-              {language === 'bn' ? 'অ্যাপ ইন্সটল' : 'Install App'}
+              {language === 'bn' ? (deferredPrompt ? 'অ্যাপ ইন্সটল করুন' : 'কিভাবে ইন্সটল করবেন?') : (deferredPrompt ? 'Install App' : 'How to install?')}
             </button>
           </div>
         </nav>

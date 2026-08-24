@@ -5,6 +5,7 @@
   "display": "standalone",
   "background_color": "#4c0519",
   "theme_color": "#4c0519",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "/vite.svg",
