@@ -10,7 +10,6 @@ import { Resume } from './components/Resume';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { LanguageProvider } from './context/LanguageContext';
-import { InstallButton } from './components/InstallButton';
 import { useEffect } from 'react';
 
 export default function App() {
@@ -52,7 +51,6 @@ export default function App() {
           <Resume />
           <Contact />
         </main>
-        <InstallButton />
         <Footer />
       </div>
     </LanguageProvider>
