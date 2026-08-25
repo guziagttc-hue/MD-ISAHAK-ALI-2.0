@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { InstallButton } from "./InstallButton";
 
 export const Header = () => {
   const [dateTime, setDateTime] = useState(new Date());
@@ -63,8 +64,9 @@ export const Header = () => {
             {isMenuOpen ? "✕" : "☰"}
           </button>
           
-          {/* Language Switcher */}
+          {/* Language Switcher and Install Button */}
           <div className="flex items-center gap-4 ml-4">
+            <InstallButton />
             <button 
               onClick={toggleLanguage}
               className="bg-rose-800 text-white px-3 py-1 rounded text-xs font-semibold hover:bg-rose-700 transition-colors"
@@ -87,6 +89,9 @@ export const Header = () => {
                 {link.name}
               </a>
             ))}
+            <div className="flex justify-center mt-2">
+                <InstallButton />
+            </div>
           </nav>
         )}
       </div>
