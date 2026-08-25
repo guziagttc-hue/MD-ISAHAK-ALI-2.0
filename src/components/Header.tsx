@@ -24,6 +24,7 @@ export const Header = () => {
   const navLinks = [
     { name: language === 'bn' ? "আমার সম্পর্কে" : "About", href: "#about" },
     { name: language === 'bn' ? "দক্ষতা" : "Skills", href: "#skills" },
+    { name: language === 'bn' ? "শিক্ষাগত যোগ্যতা" : "Education", href: "#education" },
     { name: language === 'bn' ? "সিভি" : "Resume", href: "#resume" },
     { name: language === 'bn' ? "যোগাযোগ" : "Contact", href: "#contact" },
   ];
