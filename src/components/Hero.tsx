@@ -2,6 +2,7 @@
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { InstallButton } from "./InstallButton";
 
 export const Hero = () => {
   const { language } = useLanguage();
@@ -39,13 +40,14 @@ export const Hero = () => {
         transition={{ duration: 1, delay: 0.5 }}
       />
       <p className="mb-8 text-xl text-rose-200 h-8">{text}</p>
-      <div className="flex gap-4 justify-center">
+      <div className="flex gap-4 justify-center flex-wrap">
         <a href="#portfolio" className="inline-block rounded-full bg-rose-600 px-8 py-3 font-bold text-neutral-950 hover:bg-rose-500">
           {language === 'bn' ? "আমার কাজ দেখুন" : "View My Work"}
         </a>
         <a href="#resume" className="inline-block rounded-full border border-rose-400 px-8 py-3 font-bold text-white hover:bg-rose-900">
           {language === 'bn' ? "আমার সিভি দেখুন" : "View My CV"}
         </a>
+        <InstallButton />
       </div>
     </div>
   </motion.section>
