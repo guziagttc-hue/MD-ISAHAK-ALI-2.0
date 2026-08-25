@@ -5,6 +5,7 @@ import { useLanguage } from "../context/LanguageContext";
 export const Header = () => {
   const [dateTime, setDateTime] = useState(new Date());
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { language, toggleLanguage } = useLanguage();
 
   useEffect(() => {
@@ -41,16 +42,26 @@ export const Header = () => {
         </div>
 
         {/* Bottom Row: Navigation and Extras */}
-        <nav className={`flex items-center justify-center gap-4 sm:gap-8 flex-wrap pt-3 transition-all duration-300 ${isScrolled ? 'border-t-0 pt-0' : 'border-t border-rose-800/50'}`}>
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              className="text-sm font-medium text-rose-200 hover:text-white transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
+        <div className="flex items-center justify-between">
+          <nav className={`hidden sm:flex items-center justify-center gap-4 sm:gap-8 flex-wrap pt-3 transition-all duration-300 ${isScrolled ? 'pt-0' : 'border-t border-rose-800/50'}`}>
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className="text-sm font-medium text-rose-200 hover:text-white transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            className="sm:hidden text-white" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? "✕" : "☰"}
+          </button>
           
           {/* Language Switcher */}
           <div className="flex items-center gap-4 ml-4">
@@ -61,7 +72,23 @@ export const Header = () => {
               {language === 'bn' ? 'English' : 'বাংলা'}
             </button>
           </div>
-        </nav>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <nav className="sm:hidden flex flex-col gap-4 mt-4 py-4 border-t border-rose-800">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className="text-sm font-medium text-rose-200 hover:text-white transition-colors text-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+        )}
       </div>
     </header>
   );
